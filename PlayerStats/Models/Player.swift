@@ -18,7 +18,7 @@ class Player {
     var position: String
     var jerseyNumber: Int?
     var club: String
-    var gamesPlayed: [Game]
+//    var gamesPlayed: [Game]
     
     init(
         firstName: String,
@@ -29,7 +29,7 @@ class Player {
         position: String = "",
         jerseyNumber: Int,
         club: String = "",
-        gamesPlayed: [Game] = []
+//        gamesPlayed: [Game] = []
     ) {
         self.firstName = firstName
         self.lastName = lastName
@@ -38,6 +38,13 @@ class Player {
         self.position = position
         self.jerseyNumber = jerseyNumber
         self.club = club
-        self.gamesPlayed = gamesPlayed
+//        self.gamesPlayed = gamesPlayed
+    }
+}
+
+// computed properties
+extension Player {
+    var reverseName: String {
+        return lastName + ", " + firstName
     }
 }

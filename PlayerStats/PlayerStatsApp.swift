@@ -11,7 +11,8 @@ import SwiftUI
 struct PlayerStatsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PlayerListView()
         }
+        .modelContainer(for: Player.self)
     }
 }
