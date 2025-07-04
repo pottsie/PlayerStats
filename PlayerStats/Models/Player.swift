@@ -13,10 +13,10 @@ class Player {
     var firstName: String
     var lastName: String
     var dateOfBirth: Date
-    var image: Data?
+//    var image: Data?
     var height: Int
     var position: String
-    var jerseyNumber: Int?
+    var jerseyNumber: Int
     var club: String
 //    var gamesPlayed: [Game]
     
@@ -24,10 +24,10 @@ class Player {
         firstName: String,
         lastName: String,
         dateOfBirth: Date = Date.now,
-        image: Data,
+//        image: Data,
         height: Int = 0,
         position: String = "",
-        jerseyNumber: Int,
+        jerseyNumber: Int = 0,
         club: String = "",
 //        gamesPlayed: [Game] = []
     ) {

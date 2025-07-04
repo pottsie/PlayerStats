@@ -9,19 +9,25 @@ import SwiftUI
 import SwiftData
 
 struct PlayerListView: View {
+    @Environment(\.modelContext) private var context
+    @Query(sort: \Player.lastName) private var players: [Player]
     
     var body: some View {
         NavigationStack {
             List {
-                PlayerListItemView()
-                PlayerListItemView()
+                ForEach(players) { player in
+                    PlayerListItemView(player: player)
+                }
             }
             .listStyle(.plain)
-            .navigationTitle("Roster")
+            .navigationTitle("Players(\(players.count))")
         }
     }
 }
 
 #Preview {
-    PlayerListView()
+    let preview = Preview(Player.self)
+    preview.addExamples(Player.samplePlayers)
+    return PlayerListView()
+        .modelContainer(preview.container)
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PlayerListItemView: View {
+    let player: Player
+
     var body: some View {
         HStack(spacing: 10) {
             Image("Rowan")
@@ -16,9 +18,9 @@ struct PlayerListItemView: View {
                 .frame(width: 50, height: 50)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
             VStack(alignment: .leading) {
-                Text("Potts, Michael")
+                Text(player.reverseName)
                     .font(.title2)
-                Text("Striker")
+                Text("#\(player.jerseyNumber)")
                     .italic()
                     .foregroundStyle(.secondary)
             }
@@ -29,5 +31,7 @@ struct PlayerListItemView: View {
 }
 
 #Preview {
-    PlayerListItemView()
+    let preview = Preview(Player.self)
+    PlayerListItemView(player: Player.samplePlayers[1])
+        .modelContainer(preview.container)
 }
