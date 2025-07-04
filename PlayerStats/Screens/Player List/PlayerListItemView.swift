@@ -15,8 +15,8 @@ struct PlayerListItemView: View {
             Image("Rowan")
                 .resizable()
                 .scaledToFill()
-                .frame(width: 50, height: 50)
-                .clipShape(RoundedRectangle(cornerRadius: 5))
+                .frame(width: 60, height: 60)
+                .clipShape(Circle())
             VStack(alignment: .leading) {
                 Text(player.reverseName)
                     .font(.title2)
