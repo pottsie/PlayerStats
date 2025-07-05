@@ -50,6 +50,10 @@ extension Player {
     var reverseName: String {
         return lastName + ", " + firstName
     }
+    
+    var fullName: String {
+        return firstName + " " + lastName
+    }
 }
 
 enum Gender: Int, Codable, Identifiable, CaseIterable {

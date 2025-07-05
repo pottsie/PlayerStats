@@ -11,6 +11,7 @@ import SwiftData
 struct PlayerListView: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \Player.lastName) private var players: [Player]
+    // MARK: add dynamic sorting via last name, first name, number
     @State private var addNewPlayer = false
     
     var body: some View {
@@ -18,7 +19,7 @@ struct PlayerListView: View {
             Group {
                 if players.isEmpty {
                     ContentUnavailableView("Add your first player to get started", systemImage: "person.fill")
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(.blue)
                 } else {
                     List {
                         ForEach(players) { player in
@@ -47,7 +48,11 @@ struct PlayerListView: View {
                     }
                 }
             }
-            // MARK: Add code for the add player sheet
+            // MARK: Add code for displaying the add player sheet
+            .sheet(isPresented: $addNewPlayer) {
+                NewPlayerSheet()
+                    .presentationDetents([.medium])
+            }
         }
     }
 }

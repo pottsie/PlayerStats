@@ -6,13 +6,24 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PlayerDetailView: View {
+    @Environment(\.modelContext) private var context
+    let player: Player
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                Text(player.reverseName)
+            }
+            .navigationTitle(player.fullName)
+        }
     }
 }
 
 #Preview {
-    PlayerDetailView()
+    let preview = Preview(Player.self)
+    PlayerDetailView(player: Player.samplePlayers[1])
+        .modelContainer(preview.container)
 }
