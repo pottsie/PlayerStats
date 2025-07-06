@@ -13,7 +13,7 @@ struct PlayerStatsApp: App {
     let container: ModelContainer
     var body: some Scene {
         WindowGroup {
-            PlayerListView()
+            PlayerListScreen()
         }
         .modelContainer(for: Player.self)
     }

@@ -1,0 +1,49 @@
+//
+//  Enums.swift
+//  PlayerStats
+//
+//  Created by Michael Potts on 7/6/25.
+//
+
+import Foundation
+
+enum SortOrder: String, Identifiable, CaseIterable {
+    case last, first, number
+    
+    var title: String {
+        switch self {
+        case .last:
+            return "Last name"
+        case .first:
+            return "First name"
+        case .number:
+            return "Jersey number"
+        }
+    }
+    
+    var id: Self {
+        self
+    }
+}
+
+enum Gender: Int, Codable, Identifiable, CaseIterable {
+    case female, male
+    
+    var id: Self {
+        self
+    }
+    
+    var descr: String {
+        switch self {
+        case .male:
+            "Male"
+        case .female:
+            "Female"
+        }
+    }
+}
+
+enum Relationship {
+    case father, mother, sibling, player
+}
+

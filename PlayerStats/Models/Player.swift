@@ -56,27 +56,6 @@ extension Player {
     }
 }
 
-enum Gender: Int, Codable, Identifiable, CaseIterable {
-    case female, male
-    
-    var id: Self {
-        self
-    }
-    
-    var descr: String {
-        switch self {
-        case .male:
-            "Male"
-        case .female:
-            "Female"
-        }
-    }
-}
-
-enum Relationship {
-    case father, mother, sibling, player
-}
-
 // Contact information
 //@Model
 //class ContactInfo {
