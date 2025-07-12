@@ -12,11 +12,21 @@ struct PlayerListItemView: View {
 
     var body: some View {
         HStack(spacing: 10) {
-            Image("Rowan")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 60, height: 60)
-                .clipShape(Circle())
+            if let image = player.image,
+               let uiImage = UIImage(data: image) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 60, height: 60)
+                    .clipShape(Circle())
+            } else {
+                Image("Rowan")
+//                Image(systemName: "person.circle")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 60, height: 60)
+                    .clipShape(Circle())
+            }
             VStack(alignment: .leading) {
                 Text(player.reverseName)
                     .font(.title2)

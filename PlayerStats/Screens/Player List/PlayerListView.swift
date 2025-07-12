@@ -31,7 +31,12 @@ struct PlayerListView: View {
             } else {
                 List {
                     ForEach(players) { player in
-                        PlayerListItemView(player: player)
+                        NavigationLink {
+                            PlayerDetailScreen(player: player)
+                        } label: {
+                            PlayerListItemView(player: player)
+                        }
+
                     }
                     // MARK: add onDelete function
                 }

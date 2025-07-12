@@ -18,7 +18,9 @@ class Player {
     var position: String
     var jerseyNumber: Int
     var club: String
-//    var image: Data
+    
+    @Attribute(.externalStorage)
+    var image: Data?
 //    var contactInfo: ContactInfo
 //    var additionalContacts: [ContactInfo]
 //    var gamesPlayed: [Game]
@@ -32,7 +34,7 @@ class Player {
         height: Int = 0,
         position: String = "",
         jerseyNumber: Int = 0,
-        club: String = ""
+        club: String = "",
     ) {
         self.firstName = firstName
         self.lastName = lastName
