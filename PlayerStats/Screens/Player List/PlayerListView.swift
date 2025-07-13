@@ -38,7 +38,12 @@ struct PlayerListView: View {
                         }
 
                     }
-                    // MARK: add onDelete function
+                    .onDelete { indexSet in
+                        indexSet.forEach { index in
+                            let player = players[index]
+                            context.delete(player)
+                        }
+                    }
                 }
                 .listStyle(.plain)
             }

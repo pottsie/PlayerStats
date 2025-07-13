@@ -9,9 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct PlayerListScreen: View {
-//    @Environment(\.modelContext) private var context
     @Query(sort: \Player.lastName) private var players: [Player]
-    // MARK: add dynamic sorting via last name, first name, number
     @State private var addNewPlayer = false
     @State private var sortOrder = SortOrder.last
     
@@ -43,7 +41,6 @@ struct PlayerListScreen: View {
                     }
                 }
             }
-            // MARK: Add code for displaying the add player sheet
             .sheet(isPresented: $addNewPlayer) {
                 NewPlayerSheet()
                     .presentationDetents([.medium])

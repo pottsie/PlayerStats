@@ -14,6 +14,7 @@ struct PlayerDetailScreen: View {
     let player: Player
     @State private var selectedImage: PhotosPickerItem?
     @State private var selectedImageData: Data?
+    @State private var editPlayer = false
     
     var body: some View {
         NavigationStack {
@@ -92,6 +93,7 @@ struct PlayerDetailScreen: View {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             // MARK: switch to editing the player information
+//                            EditPlayerSheet()
                         } label: {
                             Text("Edit")
                         }

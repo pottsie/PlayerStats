@@ -46,7 +46,6 @@ struct PlayerImage: View {
                     .scaledToFill()
                     .clipShape(Circle())
             }
-            
         }
         .frame(width: size, height: size)
     }
