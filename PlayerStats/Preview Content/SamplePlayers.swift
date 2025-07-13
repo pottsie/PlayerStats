@@ -14,7 +14,7 @@ extension Player {
 
     static var samplePlayers: [Player] {
         [
-            Player(firstName: "Clark", lastName: "Kent", dateOfBirth: tenYearsAgo, gender: .male, height: 167, position: "Striker", jerseyNumber: 5, club: "SCAA"),
+            Player(firstName: "Clark", lastName: "Kent", dateOfBirth: tenYearsAgo, gender: .male, height: 167, position: "Striker", jerseyNumber: 5, club: "SCAA", captain: true),
             Player(firstName: "Bruce", lastName: "Wayne", dateOfBirth: fourteenYearsAgo, gender: .male, height: 172, position: "Defender", jerseyNumber: 22, club: "Gotham FC"),
             Player(firstName: "Barabara", lastName: "Gordon", dateOfBirth: seventeenTearsAgo, gender: .female, height: 157, position: "Goalie", jerseyNumber: 11, club: "Arlington Soccer"),
             Player(firstName: "Tony", lastName: "Stark"),

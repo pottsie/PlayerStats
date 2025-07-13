@@ -22,53 +22,72 @@ struct PlayerDetailScreen: View {
                     .overlay(alignment: .bottomTrailing) {
                         PhotosPicker(selection: $selectedImage, matching: .images, photoLibrary: .shared()) {
                             ImagePickerIconView()
-                            //                            .offset(x: 115, y: 90)
                         }
                     }
             }
             .padding(.vertical, 5)
             
-            //            ScrollView {
             VStack(spacing: 10) { // Maybe a form will allow me to break this into seciotns with headers
-                Text("#10 - Central Midfield")
-                    .font(.title2)
-                    .italic()
-                    .bold()
-                Text("Captain")
-                    .font(.headline)
-                    .padding(.vertical, 0)
-                LabeledContent("Birthday", value: "Sep 20, 1966")
                 
-                LabeledContent("Gender", value: "Male")
-                LabeledContent("Height (cm)", value: "165")
-                // MARK: the games will be a link to the list of games
-                LabeledContent("Games") {
-                    Text("9 games")
-                    }
-                    // MARK: the system image icon will take you to the player stats page
-                    LabeledContent("Stats") {
-                        Image(systemName: "chart.bar.fill")
-                    }
-                    LabeledContent("Club", value: player.club)
+                VStack(spacing: 2) {
+                    Text("#\(player.jerseyNumber) - \(player.position)")
+                        .font(.title2)
+                        .italic()
+                        .bold()
+                    Text("Captain")
+                        .font(.headline)
+                        .opacity(player.captain ? 100 : 0)
+                        .padding(.vertical, 0)
                 }
-                .font(.title3)
-                .padding(.horizontal)
-                ZStack {
-                    Rectangle()
-                        .fill()
-                            .foregroundStyle(Color("BlueGreen"))
-                        Text("Contact Information")
-                            .textCase(.uppercase)
-                            .font(.caption)
-                            .foregroundStyle(.white)
-                            .bold()
-                    }
-                    .frame(width: .infinity, height: 40)
-                    
-                    Spacer()
-//                }
-//                .navigationTitle(player.fullName)
-//                .navigationBarTitleDisplayMode(.inline)
+                
+                LabeledContent("Birthday", value: player.displayDOB)
+                
+                LabeledContent("Gender", value: player.gender.descr)
+                
+                LabeledContent("Height (cm)", value: "\(player.height)")
+                
+                // MARK: the games will be a link to the list of games
+                LabeledContent("Games Played") {
+                    Text("9 games")
+                }
+                
+                // MARK: the system image icon will take you to the player stats page
+                LabeledContent("Stats") {
+                    Image(systemName: "chart.bar.fill")
+                }
+                
+                LabeledContent("Club", value: player.club)
+            }
+//            .font(.title3)
+            .padding(.horizontal)
+//            Section {
+//                Rectangle()
+//                    .foregroundStyle(Color("BlueGreen"))
+//                    .frame(width: .infinity, height: 40)
+//                    .overlay {
+//                        Text("Contact Information")
+//                            .textCase(.uppercase)
+//                            .font(.caption)
+//                            .foregroundStyle(.white)
+//                            .bold()
+//                    }
+//            }
+            ZStack {
+                Rectangle()
+                    .fill()
+                    .foregroundStyle(Color("BlueGreen"))
+                Text("Contact Information")
+                    .textCase(.uppercase)
+                    .font(.caption)
+                    .foregroundStyle(.white)
+                    .bold()
+                    .backgroundStyle(Color("BlueGreen"))
+            }
+            .frame(width: .infinity, height: 40)
+            
+            Spacer()
+            //                .navigationTitle(player.fullName)
+            //                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
@@ -77,23 +96,24 @@ struct PlayerDetailScreen: View {
                             Text("Edit")
                         }
                         .buttonStyle(.borderedProminent)
+                        .tint(Color("BlueGreen"))
                     }
                 }
                 .task(id: selectedImage) {
-                            if let data = try? await selectedImage?.loadTransferable(type: Data.self) {
-                                selectedImageData = data
-                                player.image = data
-                            }
-                        }
-            }
+                    if let data = try? await selectedImage?.loadTransferable(type: Data.self) {
+                        selectedImageData = data
+                        player.image = data
+                    }
+                }
         }
     }
+}
 //}
 
 #Preview {
     let preview = Preview(Player.self)
     NavigationStack {
-        PlayerDetailScreen(player: Player.samplePlayers[1])
+        PlayerDetailScreen(player: Player.samplePlayers[0])
             .modelContainer(preview.container)
     }
 }

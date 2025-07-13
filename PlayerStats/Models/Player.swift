@@ -18,12 +18,13 @@ class Player {
     var position: String
     var jerseyNumber: Int
     var club: String
+    var captain: Bool
     
     @Attribute(.externalStorage)
     var image: Data?
 //    var contactInfo: ContactInfo
 //    var additionalContacts: [ContactInfo]
-//    var gamesPlayed: [Game]
+//    var games: [Game]
     
     // initializer
     init(
@@ -35,6 +36,7 @@ class Player {
         position: String = "",
         jerseyNumber: Int = 0,
         club: String = "",
+        captain: Bool = false
     ) {
         self.firstName = firstName
         self.lastName = lastName
@@ -44,6 +46,7 @@ class Player {
         self.position = position
         self.jerseyNumber = jerseyNumber
         self.club = club
+        self.captain = captain
     }
 }
 
@@ -55,6 +58,10 @@ extension Player {
     
     var fullName: String {
         return firstName + " " + lastName
+    }
+    
+    var displayDOB: String {
+        return dateOfBirth.formatted(date: .abbreviated, time: .omitted)
     }
 }
 
