@@ -14,11 +14,11 @@ extension Player {
 
     static var samplePlayers: [Player] {
         [
-            Player(firstName: "Clark", lastName: "Kent", dateOfBirth: tenYearsAgo, gender: .male, height: 167, position: "Striker", jerseyNumber: 5, club: "SCAA", captain: true),
-            Player(firstName: "Bruce", lastName: "Wayne", dateOfBirth: fourteenYearsAgo, gender: .male, height: 172, position: "Defender", jerseyNumber: 22, club: "Gotham FC"),
-            Player(firstName: "Barabara", lastName: "Gordon", dateOfBirth: seventeenTearsAgo, gender: .female, height: 157, position: "Goalie", jerseyNumber: 11, club: "Arlington Soccer"),
+            Player(firstName: "Clark", lastName: "Kent", dateOfBirth: tenYearsAgo, height: 167, position: "Striker", jerseyNumber: 5, club: "SCAA", isCaptain: true, gender: .male),
+            Player(firstName: "Bruce", lastName: "Wayne", dateOfBirth: fourteenYearsAgo, height: 172, position: "Defender", jerseyNumber: 22, club: "Gotham FC", gender: .male),
+            Player(firstName: "Barabara", lastName: "Gordon", dateOfBirth: seventeenTearsAgo, height: 157, position: "Goalie", jerseyNumber: 11, club: "Arlington Soccer", gender: .female),
             Player(firstName: "Tony", lastName: "Stark"),
-            Player(firstName: "John", lastName: "Francis", dateOfBirth: fourteenYearsAgo, gender: .male, height: 172, position: "Striker", jerseyNumber: 13, club: "Arlington")
+            Player(firstName: "John", lastName: "Francis", dateOfBirth: fourteenYearsAgo, height: 172, position: "Striker", jerseyNumber: 13, club: "Arlington", gender: .male)
         ]
     }
 }

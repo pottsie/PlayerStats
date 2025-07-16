@@ -37,13 +37,13 @@ struct PlayerDetailScreen: View {
                         .bold()
                     Text("Captain")
                         .font(.headline)
-                        .opacity(player.captain ? 100 : 0)
+                        .opacity(player.isCaptain ? 100 : 0)
                         .padding(.vertical, 0)
                 }
                 
                 LabeledContent("Birthday", value: player.displayDOB)
                 
-                LabeledContent("Gender", value: player.gender.descr)
+                LabeledContent("Gender", value: player.gender.dscr)
                 
                 LabeledContent("Height (cm)", value: "\(player.height)")
                 
@@ -69,10 +69,10 @@ struct PlayerDetailScreen: View {
 //                        Text("Contact Information")
 //                            .textCase(.uppercase)
 //                            .font(.caption)
-//                            .foregroundStyle(.white)
-//                            .bold()
-//                    }
-//            }
+            //                            .foregroundStyle(.white)
+            //                            .bold()
+            //                    }
+            //            }
             ZStack {
                 Rectangle()
                     .fill()
@@ -87,13 +87,13 @@ struct PlayerDetailScreen: View {
             .frame(width: .infinity, height: 40)
             
             Spacer()
-            //                .navigationTitle(player.fullName)
-            //                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle(player.fullName)
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             // MARK: switch to editing the player information
-//                            EditPlayerSheet()
+                            editPlayer = true
                         } label: {
                             Text("Edit")
                         }
@@ -101,6 +101,10 @@ struct PlayerDetailScreen: View {
                         .tint(Color("BlueGreen"))
                     }
                 }
+                .sheet(isPresented: $editPlayer, content: {
+                    EditPlayerSheet(player: player)
+                        .presentationDetents([.large])
+                })
                 .task(id: selectedImage) {
                     if let data = try? await selectedImage?.loadTransferable(type: Data.self) {
                         selectedImageData = data
@@ -115,7 +119,7 @@ struct PlayerDetailScreen: View {
 #Preview {
     let preview = Preview(Player.self)
     NavigationStack {
-        PlayerDetailScreen(player: Player.samplePlayers[0])
+        PlayerDetailScreen(player: Player.samplePlayers[1])
             .modelContainer(preview.container)
     }
 }

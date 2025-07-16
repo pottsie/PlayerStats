@@ -28,8 +28,8 @@ struct PlayerListScreen: View {
                         }
                     } label: {
                         Text("Sort") // Display the current selection
-                            .bold()
-                            .font(.title3)
+//                            .bold()
+//                            .font(.title3)
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {

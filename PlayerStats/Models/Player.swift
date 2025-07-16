@@ -13,12 +13,12 @@ class Player {
     var firstName: String
     var lastName: String
     var dateOfBirth: Date
-    var gender: Gender
     var height: Int
     var position: String
     var jerseyNumber: Int
     var club: String
-    var captain: Bool
+    var isCaptain: Bool
+    var gender: Gender
     
     @Attribute(.externalStorage)
     var image: Data?
@@ -31,22 +31,23 @@ class Player {
         firstName: String,
         lastName: String,
         dateOfBirth: Date = Date.now,
-        gender: Gender = .male,
         height: Int = 0,
         position: String = "",
         jerseyNumber: Int = 0,
         club: String = "",
-        captain: Bool = false
+        isCaptain: Bool = false,
+        gender: Gender = .male
     ) {
         self.firstName = firstName
         self.lastName = lastName
         self.dateOfBirth = dateOfBirth
-        self.gender = gender
+//        self.gender = gender
         self.height = height
         self.position = position
         self.jerseyNumber = jerseyNumber
         self.club = club
-        self.captain = captain
+        self.isCaptain = isCaptain
+        self.gender = gender
     }
 }
 

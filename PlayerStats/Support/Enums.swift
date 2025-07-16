@@ -33,12 +33,12 @@ enum Gender: Int, Codable, Identifiable, CaseIterable {
         self
     }
     
-    var descr: String {
+    var dscr: String {
         switch self {
-        case .male:
-            "Male"
         case .female:
             "Female"
+        case .male:
+            "Male"
         }
     }
 }

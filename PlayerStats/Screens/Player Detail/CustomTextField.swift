@@ -16,7 +16,7 @@ struct CustomTextField: View {
             Text(textFieldLabel)
                 .font(.caption)
                 .textCase(.uppercase)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.black)
             TextField(textFieldLabel, text: $input)
                 .textFieldStyle(.roundedBorder)
         }
