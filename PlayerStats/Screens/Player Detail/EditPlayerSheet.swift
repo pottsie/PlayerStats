@@ -13,9 +13,9 @@ struct EditPlayerSheet: View {
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var position: String = ""
-    @State private var jerseyNumber: Int = 0
+    @State private var jerseyNumber: String = ""
     @State private var dateOfBirth: Date = Date()
-    @State private var height: Int = 0
+    @State private var height: String = ""
     @State private var club: String = ""
     @State private var captain: Bool = false
     @State private var gender: Gender = .female
@@ -26,9 +26,9 @@ struct EditPlayerSheet: View {
                 Color("BlueGreen").opacity(0.15)
                     .ignoresSafeArea()
                 VStack(spacing: 20) {
-                    CustomTextField(input: $firstName, textFieldLabel: "First")
+                    CustomTextField(input: $firstName, textFieldLabel: "First", validationFunction: nil)
                     
-                    CustomTextField(input: $lastName, textFieldLabel: "Last")
+                    CustomTextField(input: $lastName, textFieldLabel: "Last", validationFunction: nil)
                     
                     HStack {
                         Text("Date of Birth")
@@ -48,7 +48,10 @@ struct EditPlayerSheet: View {
                         .frame(width: 125)
                     }
                     
-                    CustomTextField(input: $position, textFieldLabel: "Position")
+                    CustomTextField(input: $position, textFieldLabel: "Position", validationFunction: nil)
+                    
+                    CustomTextField(input: $jerseyNumber, textFieldLabel: "Jersey Number", validationFunction: validateJerseyNumber)
+                        .keyboardType(.numberPad)
                                         
                     
                     Spacer()
@@ -73,6 +76,7 @@ struct EditPlayerSheet: View {
                             player.dateOfBirth = dateOfBirth
                             player.gender = gender
                             player.position = position
+                            player.jerseyNumber = jerseyNumber
                             
                             dismiss()
                         } label: {
@@ -86,8 +90,21 @@ struct EditPlayerSheet: View {
         .onAppear {
             firstName = player.firstName
             lastName = player.lastName
+            dateOfBirth = player.dateOfBirth
+            gender = player.gender
+            position = player.position
+            jerseyNumber = player.jerseyNumber
         }
 
+    }
+    
+    func validateJerseyNumber() -> ValidationResult {
+        let numberPattern = #"^\d{1,2}$"#
+        if jerseyNumber.range(of: numberPattern, options: .regularExpression) == nil {
+            return .failed("Number must be a 1 or 2 digit number")
+        } else {
+            return .success
+        }
     }
 }
 

@@ -13,9 +13,9 @@ class Player {
     var firstName: String
     var lastName: String
     var dateOfBirth: Date
-    var height: Int
+    var height: String
     var position: String
-    var jerseyNumber: Int
+    var jerseyNumber: String
     var club: String
     var isCaptain: Bool
     var gender: Gender
@@ -31,9 +31,9 @@ class Player {
         firstName: String,
         lastName: String,
         dateOfBirth: Date = Date.now,
-        height: Int = 0,
+        height: String = "",
         position: String = "",
-        jerseyNumber: Int = 0,
+        jerseyNumber: String = "",
         club: String = "",
         isCaptain: Bool = false,
         gender: Gender = .male
@@ -41,7 +41,6 @@ class Player {
         self.firstName = firstName
         self.lastName = lastName
         self.dateOfBirth = dateOfBirth
-//        self.gender = gender
         self.height = height
         self.position = position
         self.jerseyNumber = jerseyNumber

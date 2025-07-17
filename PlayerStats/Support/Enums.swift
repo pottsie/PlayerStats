@@ -43,6 +43,20 @@ enum Gender: Int, Codable, Identifiable, CaseIterable {
     }
 }
 
+enum ValidationResult {
+    case success
+    case failed(String)
+    
+    var errorMessage: String? {
+        switch self {
+        case .success:
+            return nil
+        case .failed(let msg):
+            return msg
+        }
+    }
+}
+
 enum Relationship {
     case father, mother, sibling, player
 }

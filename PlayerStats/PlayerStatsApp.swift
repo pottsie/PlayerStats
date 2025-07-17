@@ -20,7 +20,7 @@ struct PlayerStatsApp: App {
     
     init() {
         let schema = Schema([Player.self])
-        let config = ModelConfiguration("MyPlayers", schema: schema)
+        let config = ModelConfiguration("PlayerData", schema: schema)
         do {
             container = try ModelContainer(for: schema, configurations: config)
         } catch {

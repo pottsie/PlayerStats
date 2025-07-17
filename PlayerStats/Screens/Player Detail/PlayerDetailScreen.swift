@@ -32,7 +32,7 @@ struct PlayerDetailScreen: View {
                 
                 VStack(spacing: 2) {
                     Text("#\(player.jerseyNumber) - \(player.position)")
-                        .font(.title2)
+                        .font(.title3)
                         .italic()
                         .bold()
                     Text("Captain")
@@ -45,7 +45,7 @@ struct PlayerDetailScreen: View {
                 
                 LabeledContent("Gender", value: player.gender.dscr)
                 
-                LabeledContent("Height (cm)", value: "\(player.height)")
+                LabeledContent("Height (cm)", value: player.height)
                 
                 // MARK: the games will be a link to the list of games
                 LabeledContent("Games Played") {
